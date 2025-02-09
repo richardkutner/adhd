@@ -1,0 +1,127 @@
+<!-- Vanderbilt ADHD Teacher Assessment Form Website (WordPress Template) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanderbilt ADHD Teacher Assessment Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        form { display: flex; flex-direction: column; }
+        input, textarea, button { margin: 10px 0; padding: 10px; width: 100%; }
+        button { background: #28a745; color: white; border: none; cursor: pointer; }
+        label { font-weight: bold; margin-top: 10px; }
+        .ad-container { text-align: center; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Ad -->
+        <div class="ad-container">
+            <p>Advertisement</p>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <h2>Vanderbilt ADHD Teacher Assessment Form</h2>
+        <form id="vanderbiltForm">
+            <label>Teacher Name:</label>
+            <input type="text" name="teacher_name" placeholder="Teacher Name" required>
+            
+            <label>Student Name:</label>
+            <input type="text" name="student_name" placeholder="Student Name" required>
+            
+            <label>Student's Grade:</label>
+            <input type="text" name="student_grade" placeholder="Student Grade" required>
+            
+            <label>School Name:</label>
+            <input type="text" name="school_name" placeholder="School Name" required>
+            
+            <h3>Behavioral Assessment</h3>
+            <p>Rate the frequency of each behavior:</p>
+            <div id="questions-container"></div>
+            
+            <!-- Mid-form Ad (After 10 Questions) -->
+            <div class="ad-container" id="mid-form-ad" style="display:none;">
+                <p>Advertisement</p>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <h3>Performance Assessment</h3>
+            <p>Rate the student's performance in the following areas:</p>
+            
+            <label>Reading</label>
+            <div>
+                <input type="radio" name="reading" value="Excellent"> Excellent
+                <input type="radio" name="reading" value="Above Average"> Above Average
+                <input type="radio" name="reading" value="Average"> Average
+                <input type="radio" name="reading" value="Problematic"> Problematic
+            </div>
+            
+            <label>Mathematics</label>
+            <div>
+                <input type="radio" name="math" value="Excellent"> Excellent
+                <input type="radio" name="math" value="Above Average"> Above Average
+                <input type="radio" name="math" value="Average"> Average
+                <input type="radio" name="math" value="Problematic"> Problematic
+            </div>
+            
+            <label>Additional Comments:</label>
+            <textarea name="comments" placeholder="Enter any additional observations here..."></textarea>
+            
+            <!-- Ad before submit button -->
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="horizontal"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <button type="submit">Generate PDF</button>
+        </form>
+        <div id="pdfDownload" style="display:none;">
+            <a id="downloadLink" href="#" download>Download Your PDF</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById("questions-container");
+            const midFormAd = document.getElementById("mid-form-ad");
+            
+            const questions = [...Array(43)].map((_, i) => `Question ${i + 1}`);
+            
+            questions.forEach((question, index) => {
+                const questionLabel = document.createElement("label");
+                questionLabel.textContent = `${index + 1}. ${question}`;
+                container.appendChild(questionLabel);
+                
+                const optionsDiv = document.createElement("div");
+                ["Never", "Occasionally", "Often", "Very Often"].forEach(value => {
+                    const radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.name = `q${index + 1}`;
+                    radio.value = value;
+                    optionsDiv.appendChild(radio);
+                    optionsDiv.appendChild(document.createTextNode(` ${value} `));
+                });
+                container.appendChild(optionsDiv);
+                
+                if (index === 9) {
+                    midFormAd.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
